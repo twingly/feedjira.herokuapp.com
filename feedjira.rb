@@ -41,6 +41,6 @@ __END__
     %a{ href: "https://github.com/feedjira/feedjira" } Feedjira
 
 %p
-  Useful with
+  Useful with something like the
   = succeed " extension installed." do
     %a{ href: "https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc" } JSONView
