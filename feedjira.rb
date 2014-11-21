@@ -32,7 +32,7 @@ __END__
 @@ index
 - url = "#{request.url}?url=http://blogs.msdn.com/rss.aspx"
 %p
-  Fetches and parses RSS feeds and returns the data in JSON:
+  Fetches and parses RSS feeds and returns the data in JSON. Example:
   %a{ href: url }= url
 
 %p
