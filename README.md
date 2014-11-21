@@ -1,6 +1,6 @@
 # Feedjira app
 
-Fetches and parses RSS feeds and returns the data in JSON.
+Fetches and parses RSS feeds and returns the data in JSON. Uses [Feedjira](http://feedjira.com/).
 
 ## Develop
 
