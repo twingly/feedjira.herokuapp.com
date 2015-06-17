@@ -32,7 +32,7 @@ __END__
 @@ index
 - url = "#{request.url}?url=http://blogs.msdn.com/rss.aspx"
 %p
-  Fetches and parses RSS feeds and returns the data in JSON:
+  Fetches and parses RSS feeds and returns the data in JSON. Example:
   %a{ href: url }= url
 
 %p
@@ -41,6 +41,6 @@ __END__
     %a{ href: "https://github.com/feedjira/feedjira" } Feedjira
 
 %p
-  Useful with
+  Useful with something like the
   = succeed " extension installed." do
     %a{ href: "https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc" } JSONView
