@@ -38,7 +38,7 @@ get "/xml" do
     formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
     lexer = Rouge::Lexers::Shell.new
     @code = formatter.format(lexer.lex(prettyxml))
-    @css = Rouge::Themes::Base16.mode(:light).render(scope: '.highlight')
+    @css = Rouge::Themes::Github.render(scope: '.highlight')
 
     haml :prettyxml
   else
