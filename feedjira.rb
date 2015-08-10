@@ -1,4 +1,8 @@
+require "faraday"
+require "faraday_middleware"
 require "feedjira"
+require "pretty-xml"
+require "rouge"
 require "sinatra"
 require "sinatra/json"
 require "sinatra/reloader" if development?
@@ -20,6 +24,28 @@ get "/" do
   end
 end
 
+get "/xml" do
+  unless params[:url].to_s.empty?
+    connection = Faraday.new do |faraday|
+      faraday.use FaradayMiddleware::FollowRedirects
+      faraday.adapter Faraday.default_adapter
+      faraday.request :url_encoded
+    end
+
+    xml = connection.get(params[:url]).body
+    prettyxml = PrettyXML.write(xml)
+
+    formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
+    lexer = Rouge::Lexers::Shell.new
+    @code = formatter.format(lexer.lex(prettyxml))
+    @css = Rouge::Themes::Base16.mode(:light).render(scope: '.highlight')
+
+    haml :prettyxml
+  else
+    redirect "/"
+  end
+end
+
 __END__
 
 @@ layout
@@ -28,6 +54,11 @@ __END__
     %title Feedjira
   %body
     = yield
+
+@@ prettyxml
+%style
+  = @css
+= @code
 
 @@ index
 - url = "#{request.url}?url=http://blogs.msdn.com/rss.aspx"
