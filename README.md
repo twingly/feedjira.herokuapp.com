@@ -9,8 +9,9 @@ Fetches and parses RSS feeds and returns the data in JSON. Uses [Feedjira](http:
 
 ## Deploy
 
-    git remote add heroku git@heroku.com:feedjira.git
-    git push heroku
+The master branch at GitHub is deployed automatically.
+
+    git push
 
 ## Example usage
 
