@@ -1,7 +1,7 @@
 require "faraday"
 require "faraday_middleware"
 require "feedjira"
-require "pretty-xml"
+require "nokogiri"
 require "rouge"
 require "sinatra"
 require "sinatra/json"
@@ -33,7 +33,12 @@ get "/xml" do
     end
 
     xml = connection.get(params[:url]).body
-    prettyxml = PrettyXML.write(xml)
+    parsed_xml = Nokogiri::XML(xml)
+
+    xslt_file = File.open("./files/pretty_xml.xslt", "r")
+    xslt = Nokogiri::XSLT(xslt_file)
+
+    prettyxml = xslt.transform(parsed_xml).to_xml
 
     formatter = Rouge::Formatters::HTMLLegacy.new(css_class: 'highlight')
     lexer = Rouge::Lexers::Shell.new
