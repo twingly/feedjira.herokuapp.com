@@ -35,7 +35,7 @@ get "/xml" do
     xml = connection.get(params[:url]).body
     prettyxml = PrettyXML.write(xml)
 
-    formatter = Rouge::Formatters::HTML.new(css_class: 'highlight')
+    formatter = Rouge::Formatters::HTMLLegacy.new(css_class: 'highlight')
     lexer = Rouge::Lexers::Shell.new
     @code = formatter.format(lexer.lex(prettyxml))
     @css = Rouge::Themes::Github.render(scope: '.highlight')
