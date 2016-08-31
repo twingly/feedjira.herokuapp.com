@@ -1,7 +1,6 @@
 require "faraday"
 require "faraday_middleware"
 require "feedjira"
-require "nokogiri"
 require "rouge"
 require "sinatra"
 require "sinatra/json"
@@ -9,6 +8,7 @@ require "sinatra/reloader" if development?
 require "haml"
 
 require_relative "monkey"
+require_relative "pretty_xml"
 
 set :protection, :except => [:json_csrf]
 
@@ -33,12 +33,7 @@ get "/xml" do
     end
 
     xml = connection.get(params[:url]).body
-    parsed_xml = Nokogiri::XML(xml)
-
-    xslt_file = File.open("./files/pretty_xml.xslt", "r")
-    xslt = Nokogiri::XSLT(xslt_file)
-
-    prettyxml = xslt.transform(parsed_xml).to_xml
+    prettyxml = PrettyXML.to_pretty_xml(xml)
 
     formatter = Rouge::Formatters::HTMLLegacy.new(css_class: 'highlight')
     lexer = Rouge::Lexers::Shell.new
