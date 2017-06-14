@@ -19,6 +19,12 @@ https://feedjira.herokuapp.com/?url=https://blogs.msdn.microsoft.com/feed/
 
 Useful with an browser extension like [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc).
 
+## Note about gems
+
+Gems are vendored into `vendor/cache`, you should always check in the gems when changing gems. The caching was set up with [`bundle package`](https://bundler.io/man/bundle-package.1.html).
+
+You can use `bundle install --local` to install only from cache (e.g. you find yourself without internet connection).
+
 ## License
 
 The MIT License (MIT)
