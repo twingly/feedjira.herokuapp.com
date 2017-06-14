@@ -61,7 +61,7 @@ __END__
 = @code
 
 @@ index
-- url = "#{request.url}?url=http://blogs.msdn.com/rss.aspx"
+- url = "#{request.url}?url=https://blogs.msdn.microsoft.com/feed/"
 %p
   Fetches and parses RSS feeds and returns the data in JSON. Example:
   %a{ href: url }= url

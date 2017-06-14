@@ -15,7 +15,7 @@ The master branch at GitHub is deployed automatically.
 
 ## Example usage
 
-https://feedjira.herokuapp.com/?url=http://blogs.msdn.com/rss.aspx
+https://feedjira.herokuapp.com/?url=https://blogs.msdn.microsoft.com/feed/
 
 Useful with an browser extension like [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc).
 
