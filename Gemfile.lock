@@ -24,7 +24,7 @@ GEM
     multi_json (1.13.1)
     multipart-post (2.0.0)
     mustermann (1.0.2)
-    nokogiri (1.8.4)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     rack (2.0.5)
     rack-protection (2.0.2)
@@ -75,4 +75,4 @@ RUBY VERSION
    ruby 2.4.4p296
 
 BUNDLED WITH
-   1.16.1
+   1.16.5
