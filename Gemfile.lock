@@ -12,7 +12,7 @@ GEM
       faraday_middleware (>= 0.9)
       loofah (>= 2.0)
       sax-machine (>= 1.0)
-    haml (5.0.1)
+    haml (5.0.4)
       temple (>= 0.8.0)
       tilt
     jsonable (0.0.3)
@@ -49,8 +49,8 @@ GEM
       rack-protection (= 2.0.2)
       sinatra (= 2.0.2)
       tilt (>= 1.3, < 3)
-    temple (0.8.0)
-    tilt (2.0.8)
+    temple (0.8.1)
+    tilt (2.0.9)
     unicorn (5.3.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
@@ -72,7 +72,7 @@ DEPENDENCIES
   unicorn
 
 RUBY VERSION
-   ruby 2.4.4p296
+   ruby 2.6.2p47
 
 BUNDLED WITH
-   1.16.5
+   1.17.3
