@@ -2,7 +2,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (2.8.2)
-    crass (1.0.4)
+    crass (1.0.5)
     faraday (0.12.1)
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.11.0.1)
@@ -17,7 +17,7 @@ GEM
       tilt
     jsonable (0.0.3)
     kgio (2.11.0)
-    loofah (2.2.3)
+    loofah (2.3.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mini_portile2 (2.4.0)
