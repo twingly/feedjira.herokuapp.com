@@ -17,7 +17,7 @@ The master branch at GitHub is deployed automatically.
 
 https://feedjira.herokuapp.com/?url=https://blogs.msdn.microsoft.com/feed/
 
-Useful with an browser extension like [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc).
+Useful with a JSON viewer, like [the one in Firefox](https://developer.mozilla.org/en-US/docs/Tools/JSON_viewer).
 
 ## Note about gems
 
