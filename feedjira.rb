@@ -18,7 +18,11 @@ end
 
 get "/" do
   unless params[:url].to_s.empty?
-    json Feedjira::Feed.fetch_and_parse(params[:url])
+    begin
+      json Feedjira::Feed.fetch_and_parse(params[:url])
+    rescue Feedjira::FetchFailure => error
+      body "Fetch Failure: #{error.message}"
+    end
   else
     haml :index
   end
@@ -61,7 +65,7 @@ __END__
 = @code
 
 @@ index
-- url = "#{request.url}?url=https://blogs.msdn.microsoft.com/feed/"
+- url = "#{request.url}?url=https://github.com/blog/all.atom"
 %p
   Fetches and parses RSS feeds and returns the data in JSON. Example:
   %a{ href: url }= url
