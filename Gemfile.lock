@@ -32,7 +32,7 @@ GEM
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     racc (1.7.3)
-    rack (2.2.6.4)
+    rack (2.2.8.1)
     rack-protection (2.2.3)
       rack
     rack-test (0.6.3)
