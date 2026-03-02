@@ -16,11 +16,24 @@ configure do
   enable :inline_templates
 end
 
+helpers do
+  def fetch_body(url)
+    connection = Faraday.new do |faraday|
+      faraday.use FaradayMiddleware::FollowRedirects
+      faraday.adapter Faraday.default_adapter
+      faraday.request :url_encoded
+    end
+
+    connection.get(url).body
+  end
+end
+
 get "/" do
   unless params[:url].to_s.empty?
     begin
-      json Feedjira::Feed.fetch_and_parse(params[:url])
-    rescue Feedjira::FetchFailure => error
+      response_body = fetch_body(params[:url])
+      json Feedjira.parse(response_body)
+    rescue Faraday::Error => error
       body "Fetch Failure: #{error.message}"
     end
   else
@@ -30,13 +43,7 @@ end
 
 get "/xml" do
   unless params[:url].to_s.empty?
-    connection = Faraday.new do |faraday|
-      faraday.use FaradayMiddleware::FollowRedirects
-      faraday.adapter Faraday.default_adapter
-      faraday.request :url_encoded
-    end
-
-    xml = connection.get(params[:url]).body
+    xml = fetch_body(params[:url])
     prettyxml = PrettyXML.to_pretty_xml(xml)
 
     formatter = Rouge::Formatters::HTMLLegacy.new(css_class: 'highlight')
